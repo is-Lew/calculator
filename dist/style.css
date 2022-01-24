@@ -10,8 +10,15 @@
   height: 85vh;
 }
 * .container #container__display {
-  height: 150px;
-  border: 5px solid black;
+  height: 50px;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  border-top: 5px solid black;
+}
+* .container #container__output {
+  border-left: 5px solid black;
+  border-right: 5px solid black;
+  height: 90px;
 }
 * .container__allButtons {
   display: grid;

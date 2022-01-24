@@ -10,8 +10,13 @@ const six = document.getElementById("6");
 const seven = document.getElementById("7");
 const eight = document.getElementById("8");
 const nine = document.getElementById("9");
-const ac = document.getElementById("clear")
-const add = document.getElementById("add")
+const ac = document.getElementById("clear");
+const add = document.getElementById("add");
+const subtract = document.getElementById("subtract");
+const divide = document.getElementById("divide");
+const multiply = document.getElementById("multiply");
+const decimal = document.getElementById("decimal");
+const equals = document.getElementById("equals");
 
 const display = document.getElementById("container__display");
 
@@ -51,6 +56,21 @@ ac.addEventListener ("click", (event) => {
 })
 
 add.addEventListener ("click", (event) => {
-    display.innerHTML = 
+    display.innerHTML += "+";
 })
 
+subtract.addEventListener ("click", (event) => {
+    display.innerHTML += "-";
+})
+divide.addEventListener ("click", (event) => {
+    display.innerHTML += "/";
+})
+multiply.addEventListener ("click", (event) => {
+    display.innerHTML += "X";
+})
+decimal.addEventListener ("click", (event) => {
+    display.innerHTML += ".";
+})
+equals.addEventListener ("click", (event) => {
+    display.innerHTML += "=";
+})
