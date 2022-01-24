@@ -1,4 +1,31 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-family: "Orbitron", sans-serif;
+}
+* .container {
+  max-width: 500px;
+  margin: 5vh auto 0 auto;
+  border-radius: 30px;
+  height: 85vh;
+}
+* .container #container__display {
+  height: 150px;
+  border: 5px solid black;
+}
+* .container__allButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  min-height: 85%;
+  gap: 10px;
+  padding: 2%;
+  border: 5px solid black;
+}
+* .container__allButtons button {
+  border-radius: 35px;
+  font-family: "Orbitron", sans-serif;
+}
+* .container__allButtons #clear {
+  grid-column: span 4;
+  background-color: lightcoral;
 }
