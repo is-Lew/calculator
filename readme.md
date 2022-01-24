@@ -1,0 +1,1 @@
+This is a simple calculator that I have created to advance my knowledge of Javascript and Dom manipulation.
