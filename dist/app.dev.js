@@ -27,11 +27,26 @@ var _loop = function _loop(i) {
     operatorArr += operator[i].innerHTML;
     output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
 
-    if (output.innerHTML.includes("+") && operatorArr.length <= 1) {
+    if (output.innerHTML.includes(selectedOperator) && operatorArr.length <= 1) {
       display.innerHTML = "";
     } else if (output.innerHTML.includes("+") && operatorArr.length >= 2) {
       thirdNumber = display.innerHTML;
       output.innerHTML = Number(firstNumber) + Number(thirdNumber) + " " + selectedOperator;
+      display.innerHTML = "";
+      firstTotal = Number(firstNumber) + Number(thirdNumber);
+    } else if (output.innerHTML.includes("-") && operatorArr.length >= 2) {
+      thirdNumber = display.innerHTML;
+      output.innerHTML = Number(firstNumber) - Number(thirdNumber) + " " + selectedOperator;
+      display.innerHTML = "";
+      firstTotal = Number(firstNumber) + Number(thirdNumber);
+    } else if (output.innerHTML.includes("X") && operatorArr.length >= 2) {
+      thirdNumber = display.innerHTML;
+      output.innerHTML = Number(firstNumber) * Number(thirdNumber) + " " + selectedOperator;
+      display.innerHTML = "";
+      firstTotal = Number(firstNumber) + Number(thirdNumber);
+    } else if (output.innerHTML.includes("÷") && operatorArr.length >= 2) {
+      thirdNumber = display.innerHTML;
+      output.innerHTML = Number(firstNumber) / Number(thirdNumber) + " " + selectedOperator;
       display.innerHTML = "";
       firstTotal = Number(firstNumber) + Number(thirdNumber);
     }
@@ -45,22 +60,23 @@ for (var i = 0; i < operator.length; i++) {
   _loop(i);
 }
 
-console.log(thirdNumber); // operator.forEach(item => {
-//     item.addEventListener("click", event => {
-//         firstNumber= display.innerHTML;
-//         selectedOperator = item.innerHTML;
-//         output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
-//         display.innerHTML = "";
-//     })
-// })
-
+console.log(thirdNumber);
 equals.addEventListener("click", function (event) {
   secondNumber = display.innerHTML;
   display.innerHTML = "";
   output.innerHTML = "";
 
-  if (selectedOperator == "+") {
-    result = Number(firstNumber) + Number(secondNumber);
+  if (selectedOperator == "+" && operatorArr.length == 2) {
+    result = Number(firstNumber) + Number(secondNumber) + Number(thirdNumber);
+    output.innerHTML = result;
+  } else if (selectedOperator == "-" && operatorArr.length == 2) {
+    result = Number(firstNumber) - Number(secondNumber) - Number(thirdNumber);
+    output.innerHTML = result;
+  } else if (selectedOperator == "÷" && operatorArr.length == 2) {
+    result = Number(firstNumber) / Number(secondNumber) / Number(thirdNumber);
+    output.innerHTML = result;
+  } else if (selectedOperator == "X" && operatorArr.length == 2) {
+    result = Number(firstNumber) * Number(secondNumber) * Number(thirdNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "-") {
     result = Number(firstNumber) - Number(secondNumber);
@@ -70,6 +86,12 @@ equals.addEventListener("click", function (event) {
     output.innerHTML = result;
   } else if (selectedOperator == "X") {
     result = Number(firstNumber) * Number(secondNumber);
+    output.innerHTML = result;
+  } else if (selectedOperator == "+") {
+    result = Number(firstNumber) + Number(secondNumber);
+    output.innerHTML = result;
+  } else if (operatorArr.length >= 3) {
+    result = "Error!";
     output.innerHTML = result;
   }
 });
