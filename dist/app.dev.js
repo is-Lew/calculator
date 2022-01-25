@@ -9,9 +9,11 @@ var equals = document.getElementById("equals");
 var ac = document.getElementById("clear");
 var firstNumber;
 var secondNumber;
+var thirdNumber;
 var selectedOperator;
 var result = 0;
 var operatorArr = [];
+var firstTotal;
 numbers.forEach(function (item) {
   item.addEventListener("click", function (event) {
     display.innerHTML += item.innerHTML;
@@ -24,17 +26,26 @@ var _loop = function _loop(i) {
     selectedOperator = operator[i].innerHTML;
     operatorArr += operator[i].innerHTML;
     output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
-    display.innerHTML = "";
 
-    if (output.innerHTML.includes("+") && operatorArr.length >= 2) {
-      alert("Operator");
+    if (output.innerHTML.includes("+") && operatorArr.length <= 1) {
+      display.innerHTML = "";
+    } else if (output.innerHTML.includes("+") && operatorArr.length >= 2) {
+      thirdNumber = display.innerHTML;
+      output.innerHTML = Number(firstNumber) + Number(thirdNumber) + " " + selectedOperator;
+      display.innerHTML = "";
+      firstTotal = Number(firstNumber) + Number(thirdNumber);
     }
+
+    console.log(thirdNumber);
+    console.log(firstTotal);
   });
 };
 
 for (var i = 0; i < operator.length; i++) {
   _loop(i);
-} // operator.forEach(item => {
+}
+
+console.log(thirdNumber); // operator.forEach(item => {
 //     item.addEventListener("click", event => {
 //         firstNumber= display.innerHTML;
 //         selectedOperator = item.innerHTML;
@@ -42,7 +53,6 @@ for (var i = 0; i < operator.length; i++) {
 //         display.innerHTML = "";
 //     })
 // })
-
 
 equals.addEventListener("click", function (event) {
   secondNumber = display.innerHTML;
@@ -62,12 +72,13 @@ equals.addEventListener("click", function (event) {
     result = Number(firstNumber) * Number(secondNumber);
     output.innerHTML = result;
   }
-
-  console.log(result);
 });
 ac.addEventListener("click", function (event) {
   display.innerHTML = "";
   output.innerText = "";
+  operatorArr = [];
+  thirdNumber = 0;
+  firstTotal = 0;
 }); // let calculate = () => {
 //     if (display.innerText.includes("/")) {
 //         let result = parseFloat(display.innerText) / parseFloat(output.innerText);

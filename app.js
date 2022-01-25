@@ -9,9 +9,11 @@ const ac = document.getElementById("clear");
 
 let firstNumber;
 let secondNumber;
+let thirdNumber;
 let selectedOperator;
 let result = 0;
 let operatorArr =[];
+let firstTotal;
 
 
 
@@ -26,17 +28,26 @@ for (let i = 0; i < operator.length; i++) {
         firstNumber= display.innerHTML;
         selectedOperator = operator[i].innerHTML;
         operatorArr += operator[i].innerHTML;
-        
-
         output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
-        display.innerHTML = "";
 
-        if (output.innerHTML.includes("+") && (operatorArr.length >= 2)) {
-            alert("Operator")
-        }
+        if (output.innerHTML.includes("+") && (operatorArr.length <= 1)) {                   
+            
+            display.innerHTML = "";
+                  
+            
+        } else if (output.innerHTML.includes("+") && (operatorArr.length >= 2)) {
+            thirdNumber = display.innerHTML; 
+            output.innerHTML = (Number(firstNumber) + Number(thirdNumber) + " "  + selectedOperator);
+            display.innerHTML = "";
+            firstTotal = Number(firstNumber) + Number(thirdNumber)
+        } 
+        console.log(thirdNumber)
+        console.log(firstTotal)
     })
+    
 }
 
+console.log(thirdNumber)
 // operator.forEach(item => {
 //     item.addEventListener("click", event => {
 //         firstNumber= display.innerHTML;
@@ -51,33 +62,32 @@ for (let i = 0; i < operator.length; i++) {
     
 // })
 
+    equals.addEventListener("click", event => {
+        secondNumber = display.innerHTML
+        display.innerHTML ="";
+        output.innerHTML = "";
 
-equals.addEventListener("click", event => {
-    secondNumber = display.innerHTML
-    display.innerHTML ="";
-    output.innerHTML = "";
-
-    if (selectedOperator == "+") {
-            result = Number(firstNumber) + Number(secondNumber);
+        if (selectedOperator == "+") {
+                result = Number(firstNumber) + Number(secondNumber);
+                
+                output.innerHTML = result
+                
             
-            output.innerHTML = result
+        } else if (selectedOperator == "-") {
+                result = Number(firstNumber) - Number(secondNumber);
+                
+                output.innerHTML = result
+        }   else if (selectedOperator == "÷") {
+                result = Number(firstNumber) / Number(secondNumber);
+                
+                output.innerHTML = result
+        }   else if (selectedOperator == "X") {
+                result = Number(firstNumber) * Number(secondNumber);
             
-        
-    } else if (selectedOperator == "-") {
-            result = Number(firstNumber) - Number(secondNumber);
-            
-            output.innerHTML = result
-    }   else if (selectedOperator == "÷") {
-            result = Number(firstNumber) / Number(secondNumber);
-            
-            output.innerHTML = result
-    }   else if (selectedOperator == "X") {
-            result = Number(firstNumber) * Number(secondNumber);
-           
-            output.innerHTML = result           
-    }      
-    console.log(result)    
-})
+                output.innerHTML = result           
+        }      
+       
+    })
 
 
 
@@ -85,6 +95,10 @@ equals.addEventListener("click", event => {
 ac.addEventListener ("click", (event) => {
     display.innerHTML = "";
     output.innerText = "";
+    operatorArr = [];
+    thirdNumber = 0;
+    firstTotal = 0;
+    
 })
 
 
