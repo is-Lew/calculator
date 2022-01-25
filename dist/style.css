@@ -8,35 +8,39 @@
   margin: 5vh auto 0 auto;
   font-size: 2em;
   border-radius: 30px;
-  height: 85vh;
+  height: 88vh;
+  color: darkgreen;
+  border: 20px solid #2f2c2c;
+  background-color: #faeeee;
 }
 * .container #container__display {
   height: 50px;
-  border-left: 5px solid black;
-  border-right: 5px solid black;
-  border-top: 5px solid black;
+  border-left: 5px solid #494545;
+  border-right: 5px solid #494545;
+  border-top: 5px solid #494545;
   text-align: right;
+  background-color: #494545;
 }
 * .container #container__output {
-  border-left: 5px solid black;
-  border-right: 5px solid black;
+  border-left: 5px solid #494545;
+  border-right: 5px solid #494545;
   height: 90px;
   text-align: right;
   margin-top: auto;
+  background-color: #494545;
 }
 * .container__allButtons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  min-height: 85%;
+  min-height: 75%;
   gap: 10px;
+  margin-top: 4%;
   padding: 2%;
-  border: 5px solid black;
 }
 * .container__allButtons button {
   border-radius: 35px;
-  font-family: "Orbitron", sans-serif;
 }
 * .container__allButtons #clear {
   grid-column: span 4;
-  background-color: lightcoral;
+  background-color: #f66969;
 }

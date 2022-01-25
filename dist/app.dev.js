@@ -11,21 +11,39 @@ var firstNumber;
 var secondNumber;
 var selectedOperator;
 var result = 0;
+var operatorArr = [];
 numbers.forEach(function (item) {
   item.addEventListener("click", function (event) {
     display.innerHTML += item.innerHTML;
   });
 });
-operator.forEach(function (item) {
-  item.addEventListener("click", function (event) {
+
+var _loop = function _loop(i) {
+  operator[i].addEventListener("click", function (event) {
     firstNumber = display.innerHTML;
-    selectedOperator = item.innerHTML;
-    output.innerHTML += display.innerHTML + " " + selectedOperator;
-    display.innerHTML = ""; // if (output.innerHTML.includes("+") && item.includes("+")) {
-    //                 alert("Operator")
-    // }
+    selectedOperator = operator[i].innerHTML;
+    operatorArr += operator[i].innerHTML;
+    output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
+    display.innerHTML = "";
+
+    if (output.innerHTML.includes("+") && operatorArr.length >= 2) {
+      alert("Operator");
+    }
   });
-});
+};
+
+for (var i = 0; i < operator.length; i++) {
+  _loop(i);
+} // operator.forEach(item => {
+//     item.addEventListener("click", event => {
+//         firstNumber= display.innerHTML;
+//         selectedOperator = item.innerHTML;
+//         output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
+//         display.innerHTML = "";
+//     })
+// })
+
+
 equals.addEventListener("click", function (event) {
   secondNumber = display.innerHTML;
   display.innerHTML = "";

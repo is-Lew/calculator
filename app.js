@@ -11,6 +11,7 @@ let firstNumber;
 let secondNumber;
 let selectedOperator;
 let result = 0;
+let operatorArr =[];
 
 
 
@@ -20,19 +21,35 @@ numbers.forEach(item => {
     })
 })
 
-operator.forEach(item => {
-    item.addEventListener("click", event => {
+for (let i = 0; i < operator.length; i++) {
+    operator[i].addEventListener("click", event => {
         firstNumber= display.innerHTML;
-        selectedOperator = item.innerHTML;
+        selectedOperator = operator[i].innerHTML;
+        operatorArr += operator[i].innerHTML;
+        
 
-        output.innerHTML += display.innerHTML + " " + selectedOperator;
+        output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
         display.innerHTML = "";
 
-        // if (output.innerHTML.includes("+") && item.includes("+")) {
-        //                 alert("Operator")
-        // }
+        if (output.innerHTML.includes("+") && (operatorArr.length >= 2)) {
+            alert("Operator")
+        }
     })
-})
+}
+
+// operator.forEach(item => {
+//     item.addEventListener("click", event => {
+//         firstNumber= display.innerHTML;
+//         selectedOperator = item.innerHTML;
+
+//         output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
+//         display.innerHTML = "";
+
+        
+
+//     })
+    
+// })
 
 
 equals.addEventListener("click", event => {

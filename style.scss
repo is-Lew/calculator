@@ -6,47 +6,49 @@
 .container {
     max-width: 500px;
     margin: 5vh auto 0 auto;
-    font-size: 2em; 
-    
+    font-size: 2em;  
     border-radius: 30px;
-    height: 85vh;
+    height: 88vh;
+    color: darkgreen;
+    border: 20px solid rgb(47, 44, 44);
+    background-color: rgb(250, 238, 238);
 
         #container__display {
             height: 50px;
-            border-left: 5px solid black;
-            border-right: 5px solid black;
-            border-top: 5px solid black;
+            border-left: 5px solid rgb(73, 69, 69);
+            border-right: 5px solid rgb(73, 69, 69);
+            border-top: 5px solid rgb(73, 69, 69);
             text-align: right;
-            
-            
+            background-color: rgb(73, 69, 69);
+                     
         }
 
         #container__output {
-            border-left: 5px solid black;
-            border-right: 5px solid black;
+            border-left: 5px solid rgb(73, 69, 69);
+            border-right: 5px solid rgb(73, 69, 69);
             height: 90px;
             text-align: right;
             margin-top: auto;
+            background-color: rgb(73, 69, 69);
             
         }
 
         &__allButtons {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr;
-            min-height: 85%;
+            min-height: 75%;
             gap: 10px;
+            margin-top: 4%;
             padding: 2%;
-            border: 5px solid black;
+            // border: 5px solid rgb(47, 44, 44);
             
             button {
-                border-radius: 35px;
-                font-family: 'Orbitron', sans-serif;
-                
+                border-radius: 35px;                
             }
 
             #clear {
                 grid-column: span 4;
-                background-color: lightcoral;
+                background-color: rgb(246, 105, 105);
             }
         }
     }
