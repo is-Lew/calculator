@@ -6,6 +6,7 @@
 * .container {
   max-width: 500px;
   margin: 5vh auto 0 auto;
+  font-size: 2em;
   border-radius: 30px;
   height: 85vh;
 }
@@ -14,11 +15,14 @@
   border-left: 5px solid black;
   border-right: 5px solid black;
   border-top: 5px solid black;
+  text-align: right;
 }
 * .container #container__output {
   border-left: 5px solid black;
   border-right: 5px solid black;
   height: 90px;
+  text-align: right;
+  margin-top: auto;
 }
 * .container__allButtons {
   display: grid;

@@ -6,6 +6,11 @@ var operator = document.querySelectorAll(".operator");
 var display = document.getElementById("container__display");
 var output = document.getElementById("container__output");
 var equals = document.getElementById("equals");
+var ac = document.getElementById("clear");
+var firstNumber;
+var secondNumber;
+var selectedOperator;
+var result = 0;
 numbers.forEach(function (item) {
   item.addEventListener("click", function (event) {
     display.innerHTML += item.innerHTML;
@@ -13,20 +18,38 @@ numbers.forEach(function (item) {
 });
 operator.forEach(function (item) {
   item.addEventListener("click", function (event) {
-    output.innerHTML += display.innerHTML + item.innerHTML;
-    display.innerHTML = "";
+    firstNumber = display.innerHTML;
+    selectedOperator = item.innerHTML;
+    output.innerHTML += display.innerHTML + " " + selectedOperator;
+    display.innerHTML = ""; // if (output.innerHTML.includes("+") && item.includes("+")) {
+    //                 alert("Operator")
+    // }
   });
-}); // equals.addEventListener("click", event => {
-//     output.innerHTML = "6";
-// })
-
+});
 equals.addEventListener("click", function (event) {
-  if (output.innerHTML.includes("+")) {
-    var result = output.innerHTML.replace(/\D/g, '') + display.innerHTML;
-    display.innerHTML = "";
-    output.innerHTML = "";
-    output.innerHTML = "".concat(result);
+  secondNumber = display.innerHTML;
+  display.innerHTML = "";
+  output.innerHTML = "";
+
+  if (selectedOperator == "+") {
+    result = Number(firstNumber) + Number(secondNumber);
+    output.innerHTML = result;
+  } else if (selectedOperator == "-") {
+    result = Number(firstNumber) - Number(secondNumber);
+    output.innerHTML = result;
+  } else if (selectedOperator == "÷") {
+    result = Number(firstNumber) / Number(secondNumber);
+    output.innerHTML = result;
+  } else if (selectedOperator == "X") {
+    result = Number(firstNumber) * Number(secondNumber);
+    output.innerHTML = result;
   }
+
+  console.log(result);
+});
+ac.addEventListener("click", function (event) {
+  display.innerHTML = "";
+  output.innerText = "";
 }); // let calculate = () => {
 //     if (display.innerText.includes("/")) {
 //         let result = parseFloat(display.innerText) / parseFloat(output.innerText);
@@ -46,8 +69,7 @@ equals.addEventListener("click", function (event) {
 // const seven = document.getElementById("7");
 // const eight = document.getElementById("8");
 // const nine = document.getElementById("9");
-
-var ac = document.getElementById("clear"); // const add = document.getElementById("add");
+// const add = document.getElementById("add");
 // const subtract = document.getElementById("subtract");
 // const divide = document.getElementById("divide");
 // const multiply = document.getElementById("multiply");
@@ -83,11 +105,7 @@ var ac = document.getElementById("clear"); // const add = document.getElementByI
 // zero.addEventListener( "click", (event) =>{ 
 //     display.innerHTML += 0;
 // })
-
-ac.addEventListener("click", function (event) {
-  display.innerHTML = "";
-  output.innerText = "";
-}); // add.addEventListener ("click", (event) => {
+// add.addEventListener ("click", (event) => {
 //     display.innerHTML += "+";
 // })
 // subtract.addEventListener ("click", (event) => {

@@ -5,6 +5,13 @@ const operator = document.querySelectorAll(".operator")
 const display = document.getElementById("container__display");
 const output = document.getElementById("container__output")
 const equals = document.getElementById("equals");
+const ac = document.getElementById("clear");
+
+let firstNumber;
+let secondNumber;
+let selectedOperator;
+let result = 0;
+
 
 
 numbers.forEach(item => {
@@ -15,25 +22,53 @@ numbers.forEach(item => {
 
 operator.forEach(item => {
     item.addEventListener("click", event => {
-        output.innerHTML += display.innerHTML + item.innerHTML;
+        firstNumber= display.innerHTML;
+        selectedOperator = item.innerHTML;
+
+        output.innerHTML += display.innerHTML + " " + selectedOperator;
         display.innerHTML = "";
+
+        // if (output.innerHTML.includes("+") && item.includes("+")) {
+        //                 alert("Operator")
+        // }
     })
 })
 
-// equals.addEventListener("click", event => {
-//     output.innerHTML = "6";
-// })
 
 equals.addEventListener("click", event => {
-    
-        if (output.innerHTML.includes("+")) {
-            let result = output.innerHTML.replace(/\D/g, '') + display.innerHTML;
-            display.innerHTML ="";
-            output.innerHTML = "";
-            output.innerHTML = `${result}`
-        }
+    secondNumber = display.innerHTML
+    display.innerHTML ="";
+    output.innerHTML = "";
+
+    if (selectedOperator == "+") {
+            result = Number(firstNumber) + Number(secondNumber);
+            
+            output.innerHTML = result
+            
+        
+    } else if (selectedOperator == "-") {
+            result = Number(firstNumber) - Number(secondNumber);
+            
+            output.innerHTML = result
+    }   else if (selectedOperator == "÷") {
+            result = Number(firstNumber) / Number(secondNumber);
+            
+            output.innerHTML = result
+    }   else if (selectedOperator == "X") {
+            result = Number(firstNumber) * Number(secondNumber);
+           
+            output.innerHTML = result           
+    }      
+    console.log(result)    
 })
 
+
+
+
+ac.addEventListener ("click", (event) => {
+    display.innerHTML = "";
+    output.innerText = "";
+})
 
 
 // let calculate = () => {
@@ -56,7 +91,7 @@ equals.addEventListener("click", event => {
 // const seven = document.getElementById("7");
 // const eight = document.getElementById("8");
 // const nine = document.getElementById("9");
-const ac = document.getElementById("clear");
+
 // const add = document.getElementById("add");
 // const subtract = document.getElementById("subtract");
 // const divide = document.getElementById("divide");
@@ -95,10 +130,7 @@ const ac = document.getElementById("clear");
 //     display.innerHTML += 0;
 // })
 
-ac.addEventListener ("click", (event) => {
-    display.innerHTML = "";
-    output.innerText ="";
-})
+
 
 // add.addEventListener ("click", (event) => {
 //     display.innerHTML += "+";
