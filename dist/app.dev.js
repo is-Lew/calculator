@@ -90,10 +90,11 @@ equals.addEventListener("click", function (event) {
   } else if (selectedOperator == "+") {
     result = Number(firstNumber) + Number(secondNumber);
     output.innerHTML = result;
-  } else if (operatorArr.length >= 3) {
-    result = "Error!";
-    output.innerHTML = result;
-  }
+  } // else if (operatorArr.length >= 3) {
+  //     result = "Error!";
+  //     output.innerHTML = result
+  // }
+
 });
 ac.addEventListener("click", function (event) {
   display.innerHTML = "";

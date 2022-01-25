@@ -103,11 +103,12 @@ console.log(thirdNumber)
             result = Number(firstNumber) + Number(secondNumber);
         
             output.innerHTML = result           
-        }   else if (operatorArr.length >= 3) {
-            result = "Error!";
+        }   
+        // else if (operatorArr.length >= 3) {
+        //     result = "Error!";
 
-            output.innerHTML = result
-        }
+        //     output.innerHTML = result
+        // }
        
     })
 
