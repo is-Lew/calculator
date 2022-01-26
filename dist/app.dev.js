@@ -1,5 +1,7 @@
 "use strict";
 
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+
 var buttons = document.querySelectorAll("allButtons");
 var numbers = document.querySelectorAll(".number");
 var operator = document.querySelectorAll(".operator");
@@ -15,50 +17,56 @@ var result = 0;
 var operatorArr = [];
 var numberArr = [];
 var firstTotal;
+var totalArr = [];
 numbers.forEach(function (item) {
   item.addEventListener("click", function (event) {
     display.innerHTML += item.innerHTML;
   });
 });
 
-var _loop = function _loop(i) {
-  operator[i].addEventListener("click", function (event) {
-    firstNumber = display.innerHTML;
-    selectedOperator = operator[i].innerHTML;
-    operatorArr += operator[i].innerHTML;
+var _loop = function _loop(_i) {
+  operator[_i].addEventListener("click", function (event) {
+    numberArr.push(display.innerHTML);
+    selectedOperator = operator[_i].innerHTML;
+    operatorArr.push(operator[_i].innerHTML);
     output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
 
-    if (output.innerHTML.includes(selectedOperator) && operatorArr.length <= 1) {
-      display.innerHTML = "";
-    } else if (output.innerHTML.includes("+") && operatorArr.length >= 2) {
-      thirdNumber = display.innerHTML;
-      output.innerHTML = Number(firstNumber) + Number(thirdNumber) + " " + selectedOperator;
-      display.innerHTML = "";
-      firstTotal = Number(firstNumber) + Number(thirdNumber);
-    } else if (output.innerHTML.includes("-") && operatorArr.length >= 2) {
-      thirdNumber = display.innerHTML;
-      output.innerHTML = Number(firstNumber) - Number(thirdNumber) + " " + selectedOperator;
-      display.innerHTML = "";
-      firstTotal = Number(firstNumber) + Number(thirdNumber);
-    } else if (output.innerHTML.includes("X") && operatorArr.length >= 2) {
-      thirdNumber = display.innerHTML;
-      output.innerHTML = Number(firstNumber) * Number(thirdNumber) + " " + selectedOperator;
-      display.innerHTML = "";
-      firstTotal = Number(firstNumber) + Number(thirdNumber);
-    } else if (output.innerHTML.includes("÷") && operatorArr.length >= 2) {
-      thirdNumber = display.innerHTML;
-      output.innerHTML = Number(firstNumber) / Number(thirdNumber) + " " + selectedOperator;
-      display.innerHTML = "";
-      firstTotal = Number(firstNumber) + Number(thirdNumber);
-    }
+    for (var _i2 = 0; _i2 < numberArr.length; _i2++) {
+      if (output.innerHTML.includes(selectedOperator) && operatorArr.length <= 1) {
+        display.innerHTML = "";
+      } else if (output.innerHTML.includes("+") && operatorArr.length >= 2) {
+        thirdNumber = display.innerHTML;
+        output.innerHTML = Number(numberArr[0]) + Number(numberArr[1]) + " " + selectedOperator;
+        display.innerHTML = "";
+        firstTotal = Number(numberArr[0]) + Number(numberArr[1]);
+        totalArr.push(firstTotal);
+      } else if (output.innerHTML.includes("-") && operatorArr.length >= 2) {
+        thirdNumber = display.innerHTML;
+        output.innerHTML = Number(numberArr[0]) - Number(numberArr[1]) + " " + selectedOperator;
+        display.innerHTML = "";
+        firstTotal = Number(numberArr[0]) + Number(numberArr[1]);
+      } else if (output.innerHTML.includes("X") && operatorArr.length >= 2) {
+        thirdNumber = display.innerHTML;
+        output.innerHTML = Number(numberArr[0]) * Number(numberArr[1]) + " " + selectedOperator;
+        display.innerHTML = "";
+        firstTotal = Number(numberArr[0]) + Number(numberArr[1]);
+      } else if (output.innerHTML.includes("÷") && operatorArr.length >= 2) {
+        thirdNumber = display.innerHTML;
+        output.innerHTML = Number(numberArr[0]) / Number(numberArr[1]) + " " + selectedOperator;
+        display.innerHTML = "";
+        firstTotal = Number(numberArr[0]) + Number(numberArr[1]);
+      }
+    } // console.log(thirdNumber)
+    // console.log(firstTotal)
 
-    console.log(thirdNumber);
-    console.log(firstTotal);
+
+    console.log(numberArr[0]);
+    console.log(numberArr[1]);
   });
 };
 
-for (var i = 0; i < operator.length; i++) {
-  _loop(i);
+for (var _i = 0; _i < operator.length; _i++) {
+  _loop(_i);
 }
 
 console.log(thirdNumber);
@@ -68,28 +76,28 @@ equals.addEventListener("click", function (event) {
   output.innerHTML = "";
 
   if (selectedOperator == "+" && operatorArr.length == 2) {
-    result = Number(firstNumber) + Number(secondNumber) + Number(thirdNumber);
+    result = Number(numberArr[i]) + Number(secondNumber) + Number(thirdNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "-" && operatorArr.length == 2) {
-    result = Number(firstNumber) - Number(secondNumber) - Number(thirdNumber);
+    result = Number(numberArr[i]) - Number(secondNumber) - Number(thirdNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "÷" && operatorArr.length == 2) {
-    result = Number(firstNumber) / Number(secondNumber) / Number(thirdNumber);
+    result = Number(numberArr[i]) / Number(secondNumber) / Number(thirdNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "X" && operatorArr.length == 2) {
-    result = Number(firstNumber) * Number(secondNumber) * Number(thirdNumber);
+    result = Number(numberArr[i]) * Number(secondNumber) * Number(thirdNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "-") {
-    result = Number(firstNumber) - Number(secondNumber);
+    result = Number(numberArr[i]) - Number(secondNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "÷") {
-    result = Number(firstNumber) / Number(secondNumber);
+    result = Number(numberArr[i]) / Number(secondNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "X") {
-    result = Number(firstNumber) * Number(secondNumber);
+    result = Number(numberArr[i]) * Number(secondNumber);
     output.innerHTML = result;
   } else if (selectedOperator == "+") {
-    result = Number(firstNumber) + Number(secondNumber);
+    result = Number(numberArr[i]) + Number(secondNumber);
     output.innerHTML = result;
   } // else if (operatorArr.length >= 3) {
   //     result = "Error!";
@@ -100,9 +108,10 @@ equals.addEventListener("click", function (event) {
 ac.addEventListener("click", function (event) {
   display.innerHTML = "";
   output.innerText = "";
-  operatorArr = [];
+  operatorArr = (_readOnlyError("operatorArr"), []);
   thirdNumber = 0;
   firstTotal = 0;
+  numberArr = (_readOnlyError("numberArr"), []);
 }); // let calculate = () => {
 //     if (display.innerText.includes("/")) {
 //         let result = parseFloat(display.innerText) / parseFloat(output.innerText);
