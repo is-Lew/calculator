@@ -75,11 +75,11 @@ for (let i = 0; i < operator.length; i++) {
                         
         } else {
             display.innerHTML ="Max operators exceeded";
-            output.innerHTML = "Error!"
+            output.innerHTML = "Error!";
         }
+    })    
         
-        
-        
+            
 
 
 
