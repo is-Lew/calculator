@@ -13,6 +13,7 @@ var thirdNumber;
 var selectedOperator;
 var result = 0;
 var operatorArr = [];
+var numberArr = [];
 var firstTotal;
 numbers.forEach(function (item) {
   item.addEventListener("click", function (event) {
