@@ -13,6 +13,7 @@ let thirdNumber;
 let selectedOperator;
 let result = 0;
 let operatorArr =[];
+let numberArr = [];
 let firstTotal;
 
 
@@ -33,7 +34,6 @@ for (let i = 0; i < operator.length; i++) {
         if (output.innerHTML.includes(selectedOperator) && (operatorArr.length <= 1)) {                   
             
             display.innerHTML = "";
-                  
             
         } else if (output.innerHTML.includes("+") && (operatorArr.length >= 2)) {
             thirdNumber = display.innerHTML; 
