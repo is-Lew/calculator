@@ -12,10 +12,10 @@ let secondNumber;
 let thirdNumber;
 let selectedOperator;
 let result = 0;
-const operatorArr =[];
-const numberArr = [];
-let firstTotal;
-const totalArr =[];
+let operatorArr =[];
+let numberArr = [];
+let firstTotal = 0;
+let totalArr =[];
 
 
 
@@ -31,29 +31,32 @@ for (let i = 0; i < operator.length; i++) {
         selectedOperator = operator[i].innerHTML;
         operatorArr.push (operator[i].innerHTML);
         output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
+        
 
         for (let i = 0; i < numberArr.length; i++) {
             if (output.innerHTML.includes(selectedOperator) && (operatorArr.length <= 1)) {                   
-            
+                
                 display.innerHTML = "";
                 
-            } else if (output.innerHTML.includes("+") && (operatorArr.length >= 2)) {
+            } else if (operatorArr[0].includes("+") && (operatorArr.length == 2)) {
+                firstTotal = numberArr[0]
                 thirdNumber = display.innerHTML; 
-                output.innerHTML = (Number(numberArr[0]) + Number(numberArr[1]) + " "  + selectedOperator);
+                output.innerHTML = (Number(firstTotal) + Number(numberArr[i]) + " "  + selectedOperator);
                 display.innerHTML = "";
-                firstTotal = Number(numberArr[0]) + Number(numberArr[1])
-                totalArr.push(firstTotal);
-            } else if (output.innerHTML.includes("-") && (operatorArr.length >= 2)) {
+                firstTotal = Number(firstTotal) + Number(numberArr[i])
+
+            }
+            else if (operatorArr[i].includes("-") && (operatorArr.length >= 2)) {
                 thirdNumber = display.innerHTML; 
                 output.innerHTML = (Number(numberArr[0]) - Number(numberArr[1]) + " "  + selectedOperator);
                 display.innerHTML = "";
                 firstTotal = Number(numberArr[0]) + Number(numberArr[1])
-            } else if (output.innerHTML.includes("X") && (operatorArr.length >= 2)) {
+            } else if (operatorArr[i].includes("X") && (operatorArr.length >= 2)) {
                 thirdNumber = display.innerHTML; 
                 output.innerHTML = (Number(numberArr[0]) * Number(numberArr[1]) + " "  + selectedOperator);
                 display.innerHTML = "";
                 firstTotal = Number(numberArr[0]) + Number(numberArr[1])
-            } else if (output.innerHTML.includes("÷") && (operatorArr.length >= 2)) {
+            } else if (operatorArr[i].includes("÷") && (operatorArr.length >= 2)) {
                 thirdNumber = display.innerHTML; 
                 output.innerHTML = (Number(numberArr[0]) / Number(numberArr[1]) + " "  + selectedOperator);
                 display.innerHTML = "";
@@ -131,6 +134,8 @@ ac.addEventListener ("click", (event) => {
     thirdNumber = 0;
     firstTotal = 0;
     numberArr = [];
+    let totalArr =[];
+    
     
 })
 
