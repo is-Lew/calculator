@@ -3,6 +3,8 @@
   padding: 0px;
   font-family: "Orbitron", sans-serif;
 
+  $screenColor: rgb(73, 69, 69);
+
   .container {
     max-width: 500px;
     margin: 5vh auto 0 auto;
@@ -15,20 +17,15 @@
 
     #container__display {
       height: 50px;
-      border-left: 5px solid rgb(73, 69, 69);
-      border-right: 5px solid rgb(73, 69, 69);
-      border-top: 5px solid rgb(73, 69, 69);
       text-align: right;
-      background-color: rgb(73, 69, 69);
+      background-color: $screenColor;
     }
 
     #container__output {
-      border-left: 5px solid rgb(73, 69, 69);
-      border-right: 5px solid rgb(73, 69, 69);
       height: 90px;
       text-align: right;
       margin-top: auto;
-      background-color: rgb(73, 69, 69);
+      background-color: $screenColor;
     }
 
     &__allButtons {
@@ -38,7 +35,6 @@
       gap: 10px;
       margin-top: 4%;
       padding: 2%;
-      // border: 5px solid rgb(47, 44, 44);
 
       button {
         border-radius: 35px;
