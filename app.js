@@ -12,21 +12,31 @@ let operatorArr = [];
 let numberArr = [];
 let totalArr = [];
 let runningTotal = 0;
+let decimalCheckArr =[];
 
+const decimalCheck = () => {
+    decimalCheckArr.push(display.innerHTML)
+    if (decimalCheckArr.join().includes("..")) {
+        display.innerHTML = "Two decimals in input";
+        output.innerHTML = "Error!";
+    } 
+}
 numbers.forEach((item) => {
   item.addEventListener("click", (event) => {
     display.innerHTML += item.innerHTML;
+    decimalCheck();
   });
 });
 
 for (let i = 0; i < operator.length; i++) {
   operator[i].addEventListener("click", (event) => {
+    
     numberArr.push(Number(display.innerHTML));
     selectedOperator = operator[i].innerHTML;
     operatorArr.push(operator[i].innerHTML);
     output.innerHTML += display.innerHTML + " " + selectedOperator + " ";
     display.innerHTML = "";
-    
+           
   });
 }
 
@@ -114,4 +124,5 @@ ac.addEventListener("click", (event) => {
   numberArr = [];
   totalArr = [];
   runningTotal = 0;
+  decimalCheckArr =[];
 });

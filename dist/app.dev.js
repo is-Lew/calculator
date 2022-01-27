@@ -13,9 +13,21 @@ var operatorArr = [];
 var numberArr = [];
 var totalArr = [];
 var runningTotal = 0;
+var decimalCheckArr = [];
+
+var decimalCheck = function decimalCheck() {
+  decimalCheckArr.push(display.innerHTML);
+
+  if (decimalCheckArr.join().includes("..")) {
+    display.innerHTML = "Two decimals in input";
+    output.innerHTML = "Error!";
+  }
+};
+
 numbers.forEach(function (item) {
   item.addEventListener("click", function (event) {
     display.innerHTML += item.innerHTML;
+    decimalCheck();
   });
 });
 
@@ -96,4 +108,5 @@ ac.addEventListener("click", function (event) {
   numberArr = [];
   totalArr = [];
   runningTotal = 0;
+  decimalCheckArr = [];
 });
