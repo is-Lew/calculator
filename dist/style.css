@@ -15,15 +15,10 @@
 }
 * .container #container__display {
   height: 50px;
-  border-left: 5px solid #494545;
-  border-right: 5px solid #494545;
-  border-top: 5px solid #494545;
   text-align: right;
   background-color: #494545;
 }
 * .container #container__output {
-  border-left: 5px solid #494545;
-  border-right: 5px solid #494545;
   height: 90px;
   text-align: right;
   margin-top: auto;
