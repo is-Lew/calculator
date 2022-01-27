@@ -7,17 +7,12 @@ var display = document.getElementById("container__display");
 var output = document.getElementById("container__output");
 var equals = document.getElementById("equals");
 var ac = document.getElementById("clear");
-var firstNumber;
-var secondNumber;
-var thirdNumber;
+var decimal = document.getElementById("decimal");
 var selectedOperator;
-var result = 0;
 var operatorArr = [];
 var numberArr = [];
-var firstTotal = 0;
 var totalArr = [];
 var runningTotal = 0;
-var prevTotal = 0;
 numbers.forEach(function (item) {
   item.addEventListener("click", function (event) {
     display.innerHTML += item.innerHTML;
@@ -38,12 +33,7 @@ for (var i = 0; i < operator.length; i++) {
   _loop(i);
 }
 
-equals.addEventListener("click", function (event) {
-  numberArr.push(Number(display.innerHTML));
-  secondNumber = display.innerHTML;
-  display.innerHTML = "";
-  output.innerHTML = "";
-
+var calculate = function calculate() {
   if (operatorArr.includes("+") && !operatorArr.includes("-") && !operatorArr.includes("X") && !operatorArr.includes("÷")) {
     for (var _i = 0; _i < numberArr.length; _i++) {
       runningTotal += numberArr[_i];
@@ -52,35 +42,58 @@ equals.addEventListener("click", function (event) {
     }
   } else if (operatorArr.includes("-") && !operatorArr.includes("+") && !operatorArr.includes("X") && !operatorArr.includes("÷")) {
     for (var _i2 = 1; _i2 < numberArr.length; _i2++) {
-      runningTotal = numberArr[0] -= numberArr[_i2];
+      if (runningTotal === 0) {
+        runningTotal = numberArr[0] -= numberArr[_i2];
+      } else {
+        runningTotal -= numberArr[_i2];
+      }
+
       output.innerHTML = runningTotal;
       operatorArr = [];
     }
   } else if (operatorArr.includes("X") && !operatorArr.includes("+") && !operatorArr.includes("-") && !operatorArr.includes("÷")) {
     for (var _i3 = 1; _i3 < numberArr.length; _i3++) {
-      runningTotal = numberArr[0] *= numberArr[_i3];
+      if (runningTotal === 0) {
+        runningTotal = numberArr[0] *= numberArr[_i3];
+      } else {
+        runningTotal *= numberArr[_i3];
+      }
+
       output.innerHTML = runningTotal;
       operatorArr = [];
     }
   } else if (operatorArr.includes("÷") && !operatorArr.includes("+") && !operatorArr.includes("-") && !operatorArr.includes("X")) {
     for (var _i4 = 1; _i4 < numberArr.length; _i4++) {
-      runningTotal = numberArr[0] /= numberArr[_i4];
+      if (runningTotal === 0) {
+        runningTotal = numberArr[0] /= numberArr[_i4];
+      } else {
+        runningTotal /= numberArr[_i4];
+      }
+
       output.innerHTML = runningTotal;
       operatorArr = [];
     }
   } else {
-    display.innerHTML = "Max operators exceeded";
+    display.innerHTML = "One operator max/min";
     output.innerHTML = "Error!";
+    return "Error!";
   }
+
+  return runningTotal;
+};
+
+equals.addEventListener("click", function (event) {
+  numberArr.push(Number(display.innerHTML));
+  display.innerHTML = "";
+  output.innerHTML = "";
+  var currentTotal = calculate();
+  numberArr = [];
 });
 ac.addEventListener("click", function (event) {
   display.innerHTML = "";
   output.innerText = "";
   operatorArr = [];
-  thirdNumber = 0;
-  firstTotal = 0;
   numberArr = [];
   totalArr = [];
   runningTotal = 0;
-  prevTotal = 0;
 });
