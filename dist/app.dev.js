@@ -1,13 +1,11 @@
 "use strict";
 
-var buttons = document.querySelectorAll("allButtons");
 var numbers = document.querySelectorAll(".number");
 var operator = document.querySelectorAll(".operator");
 var display = document.getElementById("container__display");
 var output = document.getElementById("container__output");
 var equals = document.getElementById("equals");
 var ac = document.getElementById("clear");
-var decimal = document.getElementById("decimal");
 var selectedOperator;
 var operatorArr = [];
 var numberArr = [];
